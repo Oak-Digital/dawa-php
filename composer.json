@@ -1,0 +1,23 @@
+{
+    "name": "oakdigital/dawa-php",
+    "description": "A PHP implementation of the DAWA API",
+    "type": "library",
+    "license": "Proprietary",
+    "autoload": {
+        "psr-4": {
+            "Oakdigital\\DawaPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Koch Gregersen",
+            "email": "david.koch@oakdigital.dk"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
