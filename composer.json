@@ -1,9 +1,9 @@
 {
     "name": "oakdigital/dawa-php",
     "description": "A PHP implementation of the DAWA API",
+    "version": "0.1.0",
     "type": "library",
     "license": "Proprietary",
-    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Oakdigital\\DawaPhp\\": "src/"
