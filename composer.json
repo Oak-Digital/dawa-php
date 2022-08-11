@@ -1,7 +1,7 @@
 {
     "name": "oakdigital/dawa-php",
     "description": "A PHP implementation of the DAWA API",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "type": "library",
     "license": "Proprietary",
     "autoload": {
