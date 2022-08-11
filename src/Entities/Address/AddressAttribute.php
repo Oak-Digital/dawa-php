@@ -4,33 +4,53 @@ namespace Oakdigital\DawaPhp\Entities\Address;
 
 use Oakdigital\DawaPhp\Entities\Entity;
 
-class AddressAttribute
+class AddressAttribute extends Entity
 {
-    protected array $domain = [];
     protected string $code;
     protected string $name;
 
-    public function __construct($name, $href)
+    public function set($data): AddressAttribute
     {
-        $this->name = $name;
+        foreach ($data as $data_key => $data_line) {
+            switch ($data_key) {
+                case 'navn':
+                    $this->name = $data_line;
+                    break;
 
-        $params = explode('/', str_replace('https://api.dataforsyningen.dk/', '', trim($href, '/')));
-
-        $this->code = array_pop($params);
-
-        foreach ($params as $value) {
-            array_push($this->domain, $value);
+                case 'id':
+                case 'kode':
+                case 'nr':
+                case 'nummer':
+                case 'bogstav':
+                case 'nuts3':
+                case 'matrikelnr':
+                    $this->entity_id = $data_line;
+                    break;
+            }
         }
+
+        return parent::set($data);
     }
 
-    public function getLink()
+    public function setCode(string $code): AddressAttribute
     {
-        $res = "";
+        $this->code = $code;
+        return $this;
+    }
 
-        foreach ($this->domain as $i) {
-            $res .= '/' . $i;
-        }
+    public function getCode(): string
+    {
+        return $this->code;
+    }
 
-        return $res . '/' . $this->code;
+    public function setName(string $name): AddressAttribute
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

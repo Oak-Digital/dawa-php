@@ -9,6 +9,8 @@ use Oakdigital\DawaPhp\Entities\Address\AccessAddress;
 use Oakdigital\DawaPhp\Entities\Address\Address;
 use Oakdigital\DawaPhp\API\APIError;
 use Oakdigital\DawaPhp\Entities\Address\AddressParser;
+use Oakdigital\DawaPhp\Entities\BBR\BBRBuilding;
+use Oakdigital\DawaPhp\Entities\BBR\BBRUnit;
 
 class DawaAPI extends APIBase
 {
@@ -34,8 +36,6 @@ class DawaAPI extends APIBase
             ]
         ]);
 
-        var_dump($response);
-
         if (APIError::isError($response)) return false;
 
         $addresses = [];
@@ -45,46 +45,72 @@ class DawaAPI extends APIBase
 
         if (!$content_assoc || $content_assoc == null) return false;
 
-        $parser = new AddressParser();
-
         foreach ($content_assoc as $item) {
-            $address = $parser->parse($item);
+            $address = new Address();
+            $address->set($item);
             array_push($addresses, $address);
         }
 
         return $addresses;
     }
 
-    // public function getAddressByID(string $addressID): Address|APIError
-    // {
-    //     if (empty($addressID)) return new APIError('invalid_id');
+    public function getAddressByID(string $addressID): Address
+    {
+        if (empty($addressID)) return new APIError('invalid_id');
 
-    //     $content_assoc = null;
+        try {
+            $response = $this->client->request('GET', '/adresser/' . $addressID);
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
 
-    //     try {
-    //         $response = $this->client->request('GET', '/adresser/' . $addressID);
-    //         $content_json = $response->getBody()->getContents();
-    //         $content_assoc = json_decode($content_json);
-    //     } catch (Exception $e) {
-    //         return new APIError($e->getCode(), $e->getMessage());
-    //     }
+        $content_json = $response->getBody()->getContents();
 
-    //     if (!$content_assoc || $content_assoc == null) return new APIError('no_body');
+        return new Address($content_json);
+    }
 
-    //     return Address::fromJsonData($content_assoc);
-    // }
+    public function getAccessAddressByID(string $addressID): AccessAddress
+    {
+        if (empty($addressID)) return new APIError('invalid_id');
 
-    // public function getAccessAddressByID(string $addressID): AccessAddress|APIError
-    // {
-    //     if (empty($addressID)) return new APIError('invalid_id');
+        try {
+            $response = $this->client->request('GET', '/adgangsadresser/' . $addressID);
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
 
+        $content_json = $response->getBody()->getContents();
 
+        return new AccessAddress($content_json);
+    }
 
-    //     // $content_json = $response->getBody()->getContents();
-    //     // $content_assoc = json_decode($content_json);
+    public function getBBRUnitByID(string $unit_id): BBRUnit|APIError
+    {
+        if (empty($unit_id)) return new APIError('invalid_id');
 
-    //     // if (!$content_assoc || $content_assoc == null) return new APIError('no_body');
+        try {
+            $response = $this->client->request('GET', '/bbrlight/enheder/' . $unit_id);
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
 
-    //     // return AccessAddress::fromData($content_assoc);
-    // }
+        $content_json = $response->getBody()->getContents();
+
+        return new BBRUnit($content_json);
+    }
+
+    public function getBBRBuildingByID(string $building_id): BBRBuilding|APIError
+    {
+        if (empty($building_id)) return new APIError('invalid_id');
+
+        try {
+            $response = $this->client->request('GET', '/bbrlight/bygninger/' . $building_id);
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
+
+        $content_json = $response->getBody()->getContents();
+
+        return new BBRBuilding($content_json);
+    }
 }
