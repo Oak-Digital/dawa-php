@@ -48,10 +48,6 @@ class Entity
     }
 
 
-    public static function fromID(string $id)
-    {
-    }
-
 
     /**
      * Get some data by key, returns null if key is not a member of the object

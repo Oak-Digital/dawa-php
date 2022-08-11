@@ -11,6 +11,7 @@ use Oakdigital\DawaPhp\API\APIError;
 use Oakdigital\DawaPhp\Entities\Address\AddressParser;
 use Oakdigital\DawaPhp\Entities\BBR\BBRBuilding;
 use Oakdigital\DawaPhp\Entities\BBR\BBRUnit;
+use Oakdigital\DawaPhp\Entities\Entity;
 
 class DawaAPI extends APIBase
 {
@@ -112,5 +113,22 @@ class DawaAPI extends APIBase
         $content_json = $response->getBody()->getContents();
 
         return new BBRBuilding($content_json);
+    }
+
+    public function getEntityByIDAndDomain(string $entity_id, string $domain): Entity|APIError
+    {
+        if (empty($entity_id)) return new APIError('invalid_id');
+
+        $domain_formatted = trim($domain, '/');
+
+        try {
+            $response = $this->client->request('GET', "/$domain_formatted/$entity_id");
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
+
+        $content_json = $response->getBody()->getContents();
+
+        return new Entity($content_json);
     }
 }
