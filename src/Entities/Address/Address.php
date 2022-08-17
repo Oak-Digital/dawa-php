@@ -83,7 +83,7 @@ class Address extends Entity
         return parent::getAssocData() + [
             'status' => $this->status,
             'darStatus' => $this->darstatus,
-            'addresseBetgnelse' => $this->adressebetegnelse,
+            'addresseBetegnelse' => $this->adressebetegnelse,
             'etage' => $this->etage,
             'dør' => $this->dør,
             'accessAddress' => !!$this->accessAddress ? $this->accessAddress->getAssocData() : null
