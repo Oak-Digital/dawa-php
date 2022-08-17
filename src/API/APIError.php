@@ -33,7 +33,7 @@ class APIError
         return $this->message;
     }
 
-    public static function isError($object): bool
+    public static function isError($object)
     {
         return $object instanceof APIError;
     }

@@ -9,10 +9,14 @@ class BBRUnit extends BBREntity
     private int $toilet_count;
     private int $bathroom_count;
 
-    private string $building_id;
-    private string $stairway_id;
+    private $building_id;
+    private $stairway_id;
 
-    public function set($data): BBRUnit
+    /**
+     * @param array $data
+     * @return BBRUnit
+     */
+    public function set($data)
     {
         foreach ($data as $data_key => $data_line) {
             switch ($data_key) {
@@ -52,32 +56,32 @@ class BBRUnit extends BBREntity
         return parent::set($data);
     }
 
-    public function getRoomCount(): int
+    public function getRoomCount()
     {
         return $this->room_count;
     }
 
-    public function getRoomCountCoorporate(): int
+    public function getRoomCountCoorporate()
     {
         return $this->room_count_corp;
     }
 
-    public function getToiletCount(): int
+    public function getToiletCount()
     {
         return $this->toilet_count;
     }
 
-    public function getBathroomCount(): int
+    public function getBathroomCount()
     {
         return $this->bathroom_count;
     }
 
-    public function getBuildingID(): string
+    public function getBuildingID()
     {
         return $this->building_id;
     }
 
-    public function getStairwayID(): string
+    public function getStairwayID()
     {
         return $this->stairway_id;
     }

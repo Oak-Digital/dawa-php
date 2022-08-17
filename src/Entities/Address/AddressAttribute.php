@@ -9,7 +9,11 @@ class AddressAttribute extends Entity
     protected string $code;
     protected string $name;
 
-    public function set($data): AddressAttribute
+    /**
+     * @param array $data
+     * @return AddressAttribute
+     */
+    public function set($data)
     {
         foreach ($data as $data_key => $data_line) {
             switch ($data_key) {
@@ -32,7 +36,7 @@ class AddressAttribute extends Entity
         return parent::set($data);
     }
 
-    public function setCode(string $code): AddressAttribute
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -43,7 +47,7 @@ class AddressAttribute extends Entity
         return $this->code;
     }
 
-    public function setName(string $name): AddressAttribute
+    public function setName(string $name)
     {
         $this->name = $name;
         return $this;

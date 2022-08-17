@@ -8,7 +8,6 @@ use Exception;
 use Oakdigital\DawaPhp\Entities\Address\AccessAddress;
 use Oakdigital\DawaPhp\Entities\Address\Address;
 use Oakdigital\DawaPhp\API\APIError;
-use Oakdigital\DawaPhp\Entities\Address\AddressParser;
 use Oakdigital\DawaPhp\Entities\BBR\BBRBuilding;
 use Oakdigital\DawaPhp\Entities\BBR\BBRUnit;
 use Oakdigital\DawaPhp\Entities\Entity;
@@ -24,7 +23,7 @@ class DawaAPI extends APIBase
     }
 
 
-    public function searchAddress(string $query, $page = 1, $per_page = 10): array|false
+    public function searchAddress(string $query, $page = 1, $per_page = 10)
     {
         if (!$query) return false;
 
@@ -55,7 +54,7 @@ class DawaAPI extends APIBase
         return $addresses;
     }
 
-    public function getAddressByID(string $addressID): Address
+    public function getAddressByID(string $addressID)
     {
         if (empty($addressID)) return new APIError('invalid_id');
 
@@ -70,7 +69,7 @@ class DawaAPI extends APIBase
         return new Address($content_json);
     }
 
-    public function getAccessAddressByID(string $addressID): AccessAddress
+    public function getAccessAddressByID(string $addressID)
     {
         if (empty($addressID)) return new APIError('invalid_id');
 
@@ -85,7 +84,7 @@ class DawaAPI extends APIBase
         return new AccessAddress($content_json);
     }
 
-    public function getBBRUnitByID(string $unit_id): BBRUnit|APIError
+    public function getBBRUnitByID(string $unit_id)
     {
         if (empty($unit_id)) return new APIError('invalid_id');
 
@@ -100,7 +99,7 @@ class DawaAPI extends APIBase
         return new BBRUnit($content_json);
     }
 
-    public function getBBRBuildingByID(string $building_id): BBRBuilding|APIError
+    public function getBBRBuildingByID(string $building_id)
     {
         if (empty($building_id)) return new APIError('invalid_id');
 
@@ -115,7 +114,7 @@ class DawaAPI extends APIBase
         return new BBRBuilding($content_json);
     }
 
-    public function getEntityByIDAndDomain(string $entity_id, string $domain): Entity|APIError
+    public function getEntityByIDAndDomain(string $entity_id, string $domain)
     {
         if (empty($entity_id)) return new APIError('invalid_id');
 

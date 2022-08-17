@@ -4,7 +4,7 @@ namespace Oakdigital\DawaPhp\Entities;
 
 class Entity
 {
-    protected string $entity_id;
+    protected $entity_id;
     protected array $domain = [];
 
     protected array $data = [];
@@ -20,7 +20,7 @@ class Entity
      * @param array $data
      * @return Entity
      */
-    public function set(array $data): Entity
+    public function set(array $data)
     {
         foreach ($data as $data_key => $data_line) {
             switch ($data_key) {
@@ -55,7 +55,7 @@ class Entity
      * @param string $key
      * @return mixed|false
      */
-    public function getDataByKey(string $key): mixed
+    public function getDataByKey(string $key)
     {
         if (isset($this->data[$key])) return $this->data[$key];
         return null;
@@ -68,7 +68,7 @@ class Entity
      *
      * @return string
      */
-    public function getPath(): null|string
+    public function getPath()
     {
         if (empty($this->domain)) return null;
 
@@ -83,7 +83,7 @@ class Entity
 
 
 
-    private function setDomain($domain_string): void
+    private function setDomain($domain_string)
     {
         $params = explode('/', str_replace('https://api.dataforsyningen.dk/', '', trim($domain_string, '/')));
 

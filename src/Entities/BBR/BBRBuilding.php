@@ -4,7 +4,7 @@ namespace Oakdigital\DawaPhp\Entities\BBR;
 
 class BBRBuilding extends BBREntity
 {
-    private string|null $case_number;
+    private $case_number;
     private int $building_use_code;
 
     private int $build_year;
@@ -21,15 +21,19 @@ class BBRBuilding extends BBREntity
 
     private int $building_floor_count;
 
-    private string|null $building_preservation_code;
-    private string|null $building_preservation_status;
+    private $building_preservation_code;
+    private $building_preservation_status;
 
-    private string|null $building_tenancy;
+    private $building_tenancy;
     private int $building_rent;
 
     private string $building_point_id;
 
-    public function set($data): BBRBuilding
+    /**
+     * @param array $data
+     * @return BBRBuilding
+     */
+    public function set($data)
     {
         foreach ($data as $data_key => $data_line) {
             // var_dump(['key' => $data_key, 'value' => $data_line]);
@@ -117,92 +121,92 @@ class BBRBuilding extends BBREntity
         return parent::set($data);
     }
 
-    public function getCaseNumber(): string|null
+    public function getCaseNumber()
     {
         return $this->case_number;
     }
 
-    public function getBuildingUseCode(): int
+    public function getBuildingUseCode()
     {
         return $this->building_use_code;
     }
 
-    public function getBuildYear(): int
+    public function getBuildYear()
     {
         return $this->build_year;
     }
 
-    public function getRenovationYear(): int
+    public function getRenovationYear()
     {
         return $this->renovation_year;
     }
 
-    public function getBuildingArea(): int
+    public function getBuildingArea()
     {
         return $this->building_area;
     }
 
-    public function getBuildingHabitableArea(): int
+    public function getBuildingHabitableArea()
     {
         return $this->building_habitable_area;
     }
 
-    public function getBuildingCorporateArea(): int
+    public function getBuildingCorporateArea()
     {
         return $this->building_corporate_area;
     }
 
-    public function getBuildingBuiltArea(): int
+    public function getBuildingBuiltArea()
     {
         return $this->building_built_area;
     }
 
-    public function getBuildingGarageArea(): int
+    public function getBuildingGarageArea()
     {
         return $this->building_garage_area;
     }
 
-    public function getBuildingCarportArea(): int
+    public function getBuildingCarportArea()
     {
         return $this->building_carport_area;
     }
 
-    public function getBuildingOuthouseArea(): int
+    public function getBuildingOuthouseArea()
     {
         return $this->building_outhouse_area;
     }
 
-    public function getBuildingConservatoryArea(): int
+    public function getBuildingConservatoryArea()
     {
         return $this->building_conservatory_area;
     }
 
-    public function getBuildingFloorCount(): int
+    public function getBuildingFloorCount()
     {
         return $this->building_floor_count;
     }
 
-    public function getBuildingPreservationCode(): string|null
+    public function getBuildingPreservationCode()
     {
         return $this->building_preservation_code;
     }
 
-    public function getBuildingPreservationStatus(): string|null
+    public function getBuildingPreservationStatus()
     {
         return $this->building_preservation_status;
     }
 
-    public function getBuildingTenancy(): string|null
+    public function getBuildingTenancy()
     {
         return $this->building_tenancy;
     }
 
-    public function getBuildingRent(): int
+    public function getBuildingRent()
     {
         return $this->building_rent;
     }
 
-    public function getBuildingPointID(): string
+    public function getBuildingPointID()
     {
         return $this->building_point_id;
     }

@@ -7,11 +7,15 @@ use Oakdigital\DawaPhp\Entities\Entity;
 class BBREntity extends Entity
 {
     protected int $ois_id;
-    protected string $ois_ts;
+    protected $ois_ts;
 
     protected int $ObjStatus;
 
-    public function set($data): BBREntity
+    /**
+     * @param array $data
+     * @return BBREntity
+     */
+    public function set($data)
     {
         foreach ($data as $data_key => $data_line) {
             switch ($data_key) {

@@ -30,7 +30,12 @@ class AccessAddress extends Address
         parent::__construct($json);
     }
 
-    public function set(array $data): AccessAddress
+    /**
+     *
+     * @param array $data
+     * @return AccessAddress
+     */
+    public function set(array $data)
     {
         foreach ($data as $data_key => $data_line) {
 
@@ -97,67 +102,67 @@ class AccessAddress extends Address
         return $this->zone;
     }
 
-    public function getVejstykke(): AddressAttribute
+    public function getVejstykke()
     {
         return $this->vejstykke;
     }
 
-    public function getPostnummer(): AddressAttribute
+    public function getPostnummer()
     {
         return $this->postnummer;
     }
 
-    public function getEjerlav(): AddressAttribute
+    public function getEjerlav()
     {
         return $this->ejerlav;
     }
 
-    public function getKommune(): AddressAttribute
+    public function getKommune()
     {
         return $this->kommune;
     }
 
-    public function getSogn(): AddressAttribute
+    public function getSogn()
     {
         return $this->sogn;
     }
 
-    public function getRegion(): AddressAttribute
+    public function getRegion()
     {
         return $this->region;
     }
 
-    public function getLandsdel(): AddressAttribute
+    public function getLandsdel()
     {
         return $this->landsdel;
     }
 
-    public function getRetskreds(): AddressAttribute
+    public function getRetskreds()
     {
         return $this->retskreds;
     }
 
-    public function getPolitikreds(): AddressAttribute
+    public function getPolitikreds()
     {
         return $this->politikreds;
     }
 
-    public function getOpstillingskreds(): AddressAttribute
+    public function getOpstillingskreds()
     {
         return $this->opstillingskreds;
     }
 
-    public function getAfstemningsområde(): AddressAttribute
+    public function getAfstemningsområde()
     {
         return $this->afstemningsområde;
     }
 
-    public function getStorkreds(): AddressAttribute
+    public function getStorkreds()
     {
         return $this->storkreds;
     }
 
-    public function getValglandsdel(): AddressAttribute
+    public function getValglandsdel()
     {
         return $this->valglandsdel;
     }

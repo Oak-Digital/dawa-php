@@ -9,14 +9,14 @@ class Address extends Entity
     protected int $status;
     protected int $darstatus;
 
-    protected string|null $adressebetegnelse;
-    protected string|null $etage;
-    protected string|null $dør;
+    protected $adressebetegnelse;
+    protected $etage;
+    protected $dør;
 
     protected AccessAddress $accessAddress;
 
 
-    public function set(array $data): Address
+    public function set(array $data)
     {
         foreach ($data as $data_key => $data_line) {
             switch ($data_key) {
@@ -48,32 +48,32 @@ class Address extends Entity
         return parent::set($data);
     }
 
-    public function getAddress(): string
+    public function getAddress()
     {
         return $this->adressebetegnelse;
     }
 
-    public function getStatus(): int
+    public function getStatus()
     {
         return $this->status;
     }
 
-    public function getDarstatus(): int
+    public function getDarstatus()
     {
         return $this->darstatus;
     }
 
-    public function getFloor(): string|null
+    public function getFloor()
     {
         return $this->etage;
     }
 
-    public function getDoor(): string|null
+    public function getDoor()
     {
         return $this->dør;
     }
 
-    public function getAccessAddress(): AccessAddress
+    public function getAccessAddress()
     {
         return $this->accessAddress;
     }

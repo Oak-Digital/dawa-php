@@ -15,7 +15,7 @@ class APIBase
         $this->client = new Client(['base_uri' => $base_url]);
     }
 
-    public function resolve(string $address, string $method = 'GET', array $options = []): Response|APIError
+    public function resolve(string $address, string $method = 'GET', array $options = [])
     {
         try {
             return $this->client->request($method, $address, $options);
