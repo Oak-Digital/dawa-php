@@ -210,4 +210,28 @@ class BBRBuilding extends BBREntity
     {
         return $this->building_point_id;
     }
+
+    protected function getAssocData()
+    {
+        return parent::getAssocData() + [
+            'case_number' => $this->case_number,
+            'building_use_code' => $this->building_use_code,
+            'build_year' => $this->build_year,
+            'renovation_year' => $this->renovation_year,
+            'building_area' => $this->building_area,
+            'building_habitable_area' => $this->building_habitable_area,
+            'building_corporate_area' => $this->building_corporate_area,
+            'building_built_area' => $this->building_built_area,
+            'building_garage_area' => $this->building_garage_area,
+            'building_carport_area' => $this->building_carport_area,
+            'building_outhouse_area' => $this->building_outhouse_area,
+            'building_conservatory_area' => $this->building_conservatory_area,
+            'building_floor_count' => $this->building_floor_count,
+            'building_preservation_code' => $this->building_preservation_code,
+            'building_preservation_status' => $this->building_preservation_status,
+            'building_tenancy' => $this->building_tenancy,
+            'building_rent' => $this->building_rent,
+            'building_point_id' => $this->building_point_id
+        ];
+    }
 }

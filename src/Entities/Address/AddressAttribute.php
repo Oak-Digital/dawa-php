@@ -57,4 +57,12 @@ class AddressAttribute extends Entity
     {
         return $this->name;
     }
+
+    protected function getAssocData()
+    {
+        return parent::getAssocData() + [
+            'name' => $this->name ?? null,
+            'code' => $this->code ?? null
+        ];
+    }
 }

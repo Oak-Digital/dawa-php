@@ -26,7 +26,7 @@ class AccessAddress extends Address
 
     public function __construct($json = false)
     {
-        $this->accessAddress = $this;
+        // $this->accessAddress = $this;
         parent::__construct($json);
     }
 
@@ -165,5 +165,28 @@ class AccessAddress extends Address
     public function getValglandsdel()
     {
         return $this->valglandsdel;
+    }
+
+    protected function getAssocData()
+    {
+        return parent::getAssocData() + [
+            'husnr' => $this->husnr,
+            'esrejendomsnr' => $this->esrejendomsnr,
+            'matrikelnr' => $this->matrikelnr,
+            'zone' => $this->zone,
+            'vejstykke' => $this->vejstykke->getAssocData(),
+            'postnummer' => $this->postnummer->getAssocData(),
+            'ejerlav' => $this->ejerlav->getAssocData(),
+            'kommune' => $this->kommune->getAssocData(),
+            'sogn' => $this->sogn->getAssocData(),
+            'region' => $this->region->getAssocData(),
+            'landsdel' => $this->landsdel->getAssocData(),
+            'retskreds' => $this->retskreds->getAssocData(),
+            'politikreds' => $this->politikreds->getAssocData(),
+            'opstillingskreds' => $this->opstillingskreds->getAssocData(),
+            'afstemningsområde' => $this->afstemningsområde->getAssocData(),
+            'storkreds' => $this->storkreds->getAssocData(),
+            'valglandsdel' => $this->valglandsdel->getAssocData(),
+        ];
     }
 }

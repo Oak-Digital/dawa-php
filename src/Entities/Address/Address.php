@@ -13,7 +13,7 @@ class Address extends Entity
     protected $etage;
     protected $dør;
 
-    protected AccessAddress $accessAddress;
+    protected $accessAddress = null;
 
 
     public function set(array $data)
@@ -76,5 +76,17 @@ class Address extends Entity
     public function getAccessAddress()
     {
         return $this->accessAddress;
+    }
+
+    protected function getAssocData()
+    {
+        return parent::getAssocData() + [
+            'status' => $this->status,
+            'darStatus' => $this->darstatus,
+            'addresseBetgnelse' => $this->adressebetegnelse,
+            'etage' => $this->etage,
+            'dør' => $this->dør,
+            'accessAddress' => !!$this->accessAddress ? $this->accessAddress->getAssocData() : null
+        ];
     }
 }

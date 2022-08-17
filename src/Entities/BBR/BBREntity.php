@@ -54,4 +54,14 @@ class BBREntity extends Entity
     {
         return $this->ObjStatus;
     }
+
+    protected function getAssocData()
+    {
+        return parent::getAssocData() + [
+            'ois_id' => $this->ois_id,
+            'ois_ts' => $this->ois_ts,
+
+            'ObjStatus' => $this->ObjStatus
+        ];
+    }
 }

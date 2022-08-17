@@ -85,4 +85,16 @@ class BBRUnit extends BBREntity
     {
         return $this->stairway_id;
     }
+
+    protected function getAssocData()
+    {
+        return parent::getAssocData() + [
+            'room_count' => $this->room_count,
+            'room_count_corp' => $this->room_count_corp,
+            'toilet_count' => $this->toilet_count,
+            'bathroom_count' => $this->bathroom_count,
+            'building_id' => $this->building_id,
+            'stairway_id' => $this->stairway_id
+        ];
+    }
 }

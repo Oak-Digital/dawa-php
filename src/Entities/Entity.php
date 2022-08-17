@@ -93,4 +93,18 @@ class Entity
             array_push($this->domain, $value);
         }
     }
+
+    protected function getAssocData()
+    {
+        return [
+            'id' => $this->entity_id,
+            'domain' => $this->getPath(),
+            'data' => $this->data
+        ];
+    }
+
+    public function getArray()
+    {
+        return $this->getAssocData();
+    }
 }
