@@ -43,7 +43,7 @@ class DawaAPI extends APIBase
         $content_json = $response->getBody()->getContents();
         $content_assoc = json_decode($content_json, true);
 
-        if (!$content_assoc || $content_assoc == null) return false;
+        if (!$content_assoc || $content_assoc == null) return [];
 
         foreach ($content_assoc as $item) {
             $address = new Address();
@@ -129,5 +129,71 @@ class DawaAPI extends APIBase
         $content_json = $response->getBody()->getContents();
 
         return new Entity($content_json);
+    }
+
+    public function getBBRUnitsByAddressID(string $addressID)
+    {
+        if (empty($addressID)) return new APIError('invalid_id');
+
+        try {
+            $response = $this->client->request('GET', "/bbrlight/enheder", [
+                'query' => [
+                    'side' => 1,
+                    'per_side' => 10,
+                    'adresseid' => $addressID
+                ]
+            ]);
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
+
+
+        $content_json = $response->getBody()->getContents();
+        $content_assoc = json_decode($content_json, true);
+
+        if (!$content_assoc || $content_assoc == null) return [];
+
+        $units = [];
+
+        foreach ($content_assoc as $item) {
+            $unit = new BBRUnit();
+            $unit->set($item);
+            array_push($units, $unit);
+        }
+
+        return $units;
+    }
+
+    public function getBBRBuildingsByAccessAddressID(string $accessAddressID)
+    {
+        if (empty($accessAddressID)) return new APIError('invalid_id');
+
+        try {
+            $response = $this->client->request('GET', "/bbrlight/bygninger", [
+                'query' => [
+                    'side' => 1,
+                    'per_side' => 10,
+                    'adgangsadresseid' => $accessAddressID
+                ]
+            ]);
+        } catch (Exception $e) {
+            return new APIError($e->getCode(), $e->getMessage());
+        }
+
+
+        $content_json = $response->getBody()->getContents();
+        $content_assoc = json_decode($content_json, true);
+
+        if (!$content_assoc || $content_assoc == null) return [];
+
+        $buildings = [];
+
+        foreach ($content_assoc as $item) {
+            $building = new BBRBuilding();
+            $building->set($item);
+            array_push($buildings, $building);
+        }
+
+        return $buildings;
     }
 }
