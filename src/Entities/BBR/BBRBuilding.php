@@ -7,25 +7,25 @@ class BBRBuilding extends BBREntity
     private $case_number;
     private int $building_use_code;
 
-    private int $build_year;
-    private int $renovation_year;
+    private int $build_year                 = 0;
+    private int $renovation_year            = 0;
 
-    private int $building_area;
-    private int $building_habitable_area;
-    private int $building_corporate_area;
-    private int $building_built_area;
-    private int $building_garage_area;
-    private int $building_carport_area;
-    private int $building_outhouse_area;
-    private int $building_conservatory_area;
+    private int $building_area              = 0;
+    private int $building_habitable_area    = 0;
+    private int $building_corporate_area    = 0;
+    private int $building_built_area        = 0;
+    private int $building_garage_area       = 0;
+    private int $building_carport_area      = 0;
+    private int $building_outhouse_area     = 0;
+    private int $building_conservatory_area = 0;
 
-    private int $building_floor_count;
+    private int $building_floor_count       = 0;
 
     private $building_preservation_code;
     private $building_preservation_status;
 
     private $building_tenancy;
-    private int $building_rent;
+    private int $building_rent = 0;
 
     private string $building_point_id;
 
@@ -87,7 +87,7 @@ class BBRBuilding extends BBREntity
                     $this->building_outhouse_area = intval($data_line);
                     unset($data[$data_key]);
                     break;
-                case 'UDESTUE_INDB_ARL':
+                case 'UDESTUE_ARL':
                     $this->building_conservatory_area = intval($data_line);
                     unset($data[$data_key]);
                     break;
