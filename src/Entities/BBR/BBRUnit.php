@@ -4,10 +4,10 @@ namespace Oakdigital\DawaPhp\Entities\BBR;
 
 class BBRUnit extends BBREntity
 {
-    private int $room_count;
-    private int $room_count_corp;
-    private int $toilet_count;
-    private int $bathroom_count;
+    private int $vaerelse_ant;
+    private int $vaer_erhv_ant;
+    private int $ant_vandskyld_toiletter;
+    private int $ant_badevaerelser;
 
     private $building_id;
     private $stairway_id;
@@ -25,19 +25,19 @@ class BBRUnit extends BBREntity
                     unset($data[$data_key]);
                     break;
                 case 'VAERELSE_ANT':
-                    $this->room_count = intval($data_line);
+                    $this->vaerelse_ant = intval($data_line);
                     unset($data[$data_key]);
                     break;
                 case 'VAER_ERHV_ANT':
-                    $this->room_count_corp = intval($data_line);
+                    $this->vaer_erhv_ant = intval($data_line);
                     unset($data[$data_key]);
                     break;
                 case 'AntVandskylToilleter':
-                    $this->toilet_count = intval($data_line);
+                    $this->ant_vandskyld_toiletter = intval($data_line);
                     unset($data[$data_key]);
                     break;
                 case 'AntBadevaerelser':
-                    $this->bathroom_count = intval($data_line);
+                    $this->ant_badevaerelser = intval($data_line);
                     unset($data[$data_key]);
                     break;
                 case 'bygning':
@@ -58,22 +58,22 @@ class BBRUnit extends BBREntity
 
     public function getRoomCount()
     {
-        return $this->room_count;
+        return $this->vaerelse_ant;
     }
 
     public function getRoomCountCoorporate()
     {
-        return $this->room_count_corp;
+        return $this->vaer_erhv_ant;
     }
 
     public function getToiletCount()
     {
-        return $this->toilet_count;
+        return $this->ant_vandskyld_toiletter;
     }
 
     public function getBathroomCount()
     {
-        return $this->bathroom_count;
+        return $this->ant_badevaerelser;
     }
 
     public function getBuildingID()
@@ -89,10 +89,10 @@ class BBRUnit extends BBREntity
     protected function getAssocData()
     {
         return parent::getAssocData() + [
-            'room_count' => $this->room_count,
-            'room_count_corp' => $this->room_count_corp,
-            'toilet_count' => $this->toilet_count,
-            'bathroom_count' => $this->bathroom_count,
+            'vaerelse_ant' => $this->vaerelse_ant,
+            'vaer_erhv_ant' => $this->vaer_erhv_ant,
+            'ant_vandskyld_toiletter' => $this->ant_vandskyld_toiletter,
+            'ant_badevaerelser' => $this->ant_badevaerelser,
             'building_id' => $this->building_id,
             'stairway_id' => $this->stairway_id
         ];
