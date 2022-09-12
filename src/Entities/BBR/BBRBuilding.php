@@ -7,25 +7,25 @@ class BBRBuilding extends BBREntity
     private $byggesag_id;
     private int $byg_anvend_kode;
 
-    private int $opfoerelse_aar             = 0;
-    private int $ombyg_aar            = 0;
+    private int $opfoerelse_aar     = 0;
+    private int $ombyg_aar          = 0;
 
-    private int $byg_arl_samlet              = 0;
-    private int $byg_bolig_arl_samlet    = 0;
-    private int $erhv_arl_saml    = 0;
-    private int $byg_bebyg_arl        = 0;
-    private int $garage_indb_arl       = 0;
-    private int $carport_indb_arl      = 0;
+    private int $byg_arl_saml       = 0;
+    private int $byg_bolig_arl_saml = 0;
+    private int $erhv_arl_saml      = 0;
+    private int $byg_bebyg_arl      = 0;
+    private int $garage_indb_arl    = 0;
+    private int $carport_indb_arl   = 0;
     private int $udhus_indb_arl     = 0;
-    private int $udestue_arl = 0;
+    private int $udestue_arl        = 0;
 
-    private int $etager_ant       = 0;
+    private int $etager_ant         = 0;
 
     private $fredning_kode;
     private $bevar_vaerdig;
 
     private $udlej_forhold;
-    private int $husleje = 0;
+    private int $husleje            = 0;
 
     private string $bygpkt_id;
 
@@ -60,11 +60,11 @@ class BBRBuilding extends BBREntity
                     unset($data[$data_key]);
                     break;
                 case 'BYG_ARL_SAML':
-                    $this->byg_arl_samlet = intval($data_line);
+                    $this->byg_arl_saml = intval($data_line);
                     unset($data[$data_key]);
                     break;
                 case 'BYG_BOLIG_ARL_SAML':
-                    $this->byg_bolig_arl_samlet = intval($data_line);
+                    $this->byg_bolig_arl_saml = intval($data_line);
                     unset($data[$data_key]);
                     break;
                 case 'ERHV_ARL_SAML':
@@ -218,8 +218,8 @@ class BBRBuilding extends BBREntity
             'byg_anvend_kode' => $this->byg_anvend_kode,
             'opfoerelse_aar' => $this->opfoerelse_aar,
             'ombyg_aar' => $this->ombyg_aar,
-            'byg_arl_samlet' => $this->byg_arl_samlet,
-            'byg_bolig_arl_samlet' => $this->byg_bolig_arl_samlet,
+            'byg_arl_saml' => $this->byg_arl_saml,
+            'byg_bolig_arl_saml' => $this->byg_bolig_arl_saml,
             'erhv_arl_saml' => $this->erhv_arl_saml,
             'byg_bebyg_arl' => $this->byg_bebyg_arl,
             'garage_indb_arl' => $this->garage_indb_arl,
