@@ -2,4 +2,4 @@
 
 [WIP]
 
-A PHP implementation of the DAWA API. For internal use at OakDigital only.
+A rudementary implentation of the DAWA API in PHP, probably not going to be updated
